@@ -5,30 +5,97 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#dfe"
+    android:background="#dff"
     android:gravity="center_horizontal"
     tools:context=".MainActivity">
-    
+
+    <!-- 支出 -->
     <TextView
-        android:id="@+id/text_view"
+        android:id="@+id/text_view_pay"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="30sp"
-        android:layout_margin="20dp"
+        android:layout_margin="10dp"
         android:gravity="center" />
-    
+
     <EditText
-        android:id="@+id/edit_text"
-        android:hint="@string/hint"
+        android:id="@+id/edit_text_payitem"
+        android:hint="@string/item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="20dp"
+        android:layout_margin="10dp"
+        android:background="#ffffff"
+        android:gravity="center"/>
+
+    <EditText
+        android:id="@+id/edit_text_payamount"
+        android:hint="@string/amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
         android:background="#ffffff"
         android:gravity="center"/>
 
     <Button
-        android:id="@+id/button"
-        android:text="@string/button"
+        android:id="@+id/button_pay"
+        android:text="@string/pay"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <!-- 収入 -->
+    <TextView
+        android:id="@+id/text_view_income"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:layout_margin="10dp"
+        android:gravity="center" />
+
+    <EditText
+        android:id="@+id/edit_text_incomeitem"
+        android:hint="@string/item"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="#ffffff"
+        android:gravity="center"/>
+
+    <EditText
+        android:id="@+id/edit_text_incomeamount"
+        android:hint="@string/amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="#ffffff"
+        android:gravity="center"/>
+
+    <Button
+        android:id="@+id/button_income"
+        android:text="@string/income"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <!-- 残高 -->
+    <TextView
+        android:id="@+id/text_view_balance"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="30sp"
+        android:layout_margin="10dp"
+        android:gravity="center" />
+
+    <EditText
+        android:id="@+id/edit_text_balance"
+        android:hint="@string/amount"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:background="#ffffff"
+        android:gravity="center"/>
+
+    <Button
+        android:id="@+id/button_balance"
+        android:text="@string/balance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     

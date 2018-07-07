@@ -10,9 +10,21 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        button.setOnClickListener {
-            if(edit_text.text != null){
-                text_view.text = edit_text.text.toString()
+        button_pay.setOnClickListener {
+            if(edit_text_payamount.text != null && edit_text_payitem.text != null){
+                text_view_pay.text = edit_text_payitem.text.toString() + " " + edit_text_payamount.text.toString()
+            }
+        }
+
+        button_income.setOnClickListener {
+            if(edit_text_incomeamount.text != null && edit_text_incomeitem.text != null){
+                text_view_income.text = edit_text_incomeitem.text.toString() + " " + edit_text_incomeamount.text.toString()
+            }
+        }
+
+        button_balance.setOnClickListener {
+            if(edit_text_balance.text != null){
+                text_view_balance.text = edit_text_balance.text.toString()
             }
         }
     }
