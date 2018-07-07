@@ -2,6 +2,9 @@
     <string name="app_name">cashbook</string>
     <string name="button">Button</string>
     <string name="hint">input</string>
+    <string name="graph">グラフ画面</string>
+    <string name="tograph">グラフへ</string>
+    <string name="toinput">入力画面へ</string>
     <string name="item">品目</string>
     <string name="amount">金額</string>
     <string name="pay">支出</string>
