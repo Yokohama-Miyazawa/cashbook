@@ -2,8 +2,10 @@ package jp.ac.titech.itpro.sdl.cashbook
 
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.db.select
+import kotlinx.android.synthetic.main.activity_main3.*
 import kotlinx.android.synthetic.main.activity_main3.list
 
 class Main3Activity : AppCompatActivity() {
@@ -22,5 +24,13 @@ class Main3Activity : AppCompatActivity() {
         list.adapter = CashListAdapter(baseContext, R.layout.row).apply {
             addAll(dataList)
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean {
+        when (item?.itemId) {
+            android.R.id.home -> finish()
+            else -> return super.onOptionsItemSelected(item)
+        }
+        return true
     }
 }
