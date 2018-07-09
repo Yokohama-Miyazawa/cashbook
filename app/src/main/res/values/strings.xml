@@ -6,6 +6,7 @@
     <string name="tograph">グラフへ</string>
     <string name="tolist">リストへ</string>
     <string name="toinput">入力画面へ</string>
+    <string name="tospeech">音声入力へ</string>
     <string name="item">品目</string>
     <string name="amount">金額</string>
     <string name="pay">支出</string>
@@ -15,4 +16,7 @@
     <string name="label_date">日付</string>
     <string name="label_item">品目</string>
     <string name="label_amount">金額</string>
+    <string name="error">No Activity</string>
+    <string name="text">音声認識</string>
+    <string name="button_speech">Speech</string>
 </resources>

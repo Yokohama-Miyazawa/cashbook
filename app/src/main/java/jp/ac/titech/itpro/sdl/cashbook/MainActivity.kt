@@ -36,6 +36,11 @@ class MainActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
+        button_gotospeech.setOnClickListener {
+            val intent = Intent(this, Main4Activity::class.java)
+            startActivity(intent)
+        }
+
         button_pay.setOnClickListener {
             if(edit_text_payamount.text != null && edit_text_payitem.text != null){
                 val date = Date()
@@ -63,11 +68,7 @@ class MainActivity : AppCompatActivity() {
                 val format = SimpleDateFormat("yyyyMMddHHmmss", Locale.getDefault())
                 val now_time = format.format(date)
 
-                val db = CashDBHelper.getInstance(this)
-                val dataList =  db.readableDatabase.select(CashDBHelper.tableName).parseList<ListData>(ListDataParser())
-
-                text_view_income.text = dataList.toString()
-                //text_view_income.text = now_time + " " + edit_text_incomeitem.text.toString() + " " + edit_text_incomeamount.text.toString()
+                text_view_income.text = now_time + " " + edit_text_incomeitem.text.toString() + " " + edit_text_incomeamount.text.toString()
             }
         }
 
