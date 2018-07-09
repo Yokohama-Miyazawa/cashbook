@@ -21,6 +21,11 @@ class Main2Activity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "グラフ画面"
 
+        // Preferenceを取得
+        val pref = getSharedPreferences("Hoge", MODE_PRIVATE)
+        // Preferenceから読み込み
+        preferenceText.text = pref.getString("key", "default")
+
         // ---------------------------------------------------- //
         var mChart = chart
         mChart!!.description.isEnabled = false
@@ -64,6 +69,8 @@ class Main2Activity : AppCompatActivity() {
         mChart!!.notifyDataSetChanged()
         mChart!!.invalidate();
         // ---------------------------------------------------- //
+
+        intentTextView.text = intent.getStringExtra(MainActivity.EXTRA_TEXTDATA)
 
     }
 

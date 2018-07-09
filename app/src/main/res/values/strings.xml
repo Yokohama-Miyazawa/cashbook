@@ -4,6 +4,7 @@
     <string name="hint">input</string>
     <string name="graph">グラフ画面</string>
     <string name="tograph">グラフへ</string>
+    <string name="tolist">リストへ</string>
     <string name="toinput">入力画面へ</string>
     <string name="item">品目</string>
     <string name="amount">金額</string>
@@ -11,4 +12,7 @@
     <string name="income">収入</string>
     <string name="balance">残高</string>
     <string name="chartLable">グラフ</string>
+    <string name="label_date">日付</string>
+    <string name="label_item">品目</string>
+    <string name="label_amount">金額</string>
 </resources>
