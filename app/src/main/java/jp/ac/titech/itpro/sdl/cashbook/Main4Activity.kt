@@ -10,14 +10,18 @@ import android.view.MenuItem
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import java.util.ArrayList;
-import java.util.Locale;
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.activity_main4.*
+import org.jetbrains.anko.db.insert
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class Main4Activity : AppCompatActivity() {
     private var textView: TextView? = null
 
-    private var lang: Int = 0
+    private var item: String = null.toString()
+    private var amount: String = null.toString()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -26,39 +30,56 @@ class Main4Activity : AppCompatActivity() {
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
         supportActionBar?.title = "音声認識"
 
-        // 言語選択 0:日本語、1:英語、2:オフライン、その他:General
-        lang = 0
-
         // 認識結果を表示させる
         textView = findViewById(R.id.text_view) as TextView
 
         val buttonStart = findViewById(R.id.button_start) as Button
         buttonStart.setOnClickListener {
             // 音声認識を開始
-            speech()
+            speech("品目")
+            Thread.sleep(6000)
+            speech("金額")
+        }
+
+        button_set_pay.setOnClickListener {
+            val date = Date()
+            val format = SimpleDateFormat("yyyyMMddHHmmss", Locale.getDefault())
+            val now_time = format.format(date)
+
+            var db = CashDBHelper.getInstance(this);
+            db.use{
+                insert(CashDBHelper.tableName,
+                        "date" to now_time,
+                        "item" to item,
+                        "amount" to "-" + amount
+                )
+            }
+        }
+
+        button_set_income.setOnClickListener {
+            val date = Date()
+            val format = SimpleDateFormat("yyyyMMddHHmmss", Locale.getDefault())
+            val now_time = format.format(date)
+
+            var db = CashDBHelper.getInstance(this);
+            db.use{
+                insert(CashDBHelper.tableName,
+                        "date" to now_time,
+                        "item" to item,
+                        "amount" to amount
+                )
+            }
         }
     }
 
-    private fun speech() {
+    private fun speech(message : String) {
         // 音声認識の　Intent インスタンス
         val intent = Intent(RecognizerIntent.ACTION_RECOGNIZE_SPEECH)
 
-        if (lang == 0) {
-            // 日本語
-            intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.JAPAN.toString())
-        } else if (lang == 1) {
-            // 英語
-            intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.ENGLISH.toString())
-        } else if (lang == 2) {
-            // Off line mode
-            intent.putExtra(RecognizerIntent.EXTRA_PREFER_OFFLINE, true)
-        } else {
-            intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE_MODEL,
-                    RecognizerIntent.LANGUAGE_MODEL_FREE_FORM)
-        }
+        intent.putExtra(RecognizerIntent.EXTRA_LANGUAGE, Locale.JAPAN.toString())
 
         intent.putExtra(RecognizerIntent.EXTRA_MAX_RESULTS, 100)
-        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, "音声を入力")
+        intent.putExtra(RecognizerIntent.EXTRA_PROMPT, message)
 
         try {
             // インテント発行
@@ -80,6 +101,15 @@ class Main4Activity : AppCompatActivity() {
 
             if (candidates.size > 0) {
                 // 認識結果候補で一番有力なものを表示
+                val result = candidates[0]
+                if(result.indexOf("円") == -1) {  // 品目
+                    speech_item.text = result
+                    item = result
+                } else {  // 金額
+                    val result_amount = result.substring(0, result.indexOf("円"))
+                    speech_amount.text = result
+                    amount = result_amount
+                }
                 textView!!.text = candidates[0]
             }
         }
@@ -89,6 +119,7 @@ class Main4Activity : AppCompatActivity() {
         private val REQUEST_CODE = 1000
     }
 
+    // ホーム画面に戻る
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         when (item?.itemId) {
             android.R.id.home -> finish()

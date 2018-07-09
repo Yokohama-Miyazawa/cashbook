@@ -13,10 +13,13 @@
     <string name="income">収入</string>
     <string name="balance">残高</string>
     <string name="chartLable">グラフ</string>
-    <string name="label_date">日付</string>
-    <string name="label_item">品目</string>
-    <string name="label_amount">金額</string>
+    <string name="label_date">日付：</string>
+    <string name="label_item">品目：</string>
+    <string name="label_amount">金額：</string>
     <string name="error">No Activity</string>
     <string name="text">音声認識</string>
     <string name="button_speech">Speech</string>
+    <string name="button_set">登録</string>
+    <string name="button_set_pay">支出</string>
+    <string name="button_set_income">収入</string>
 </resources>

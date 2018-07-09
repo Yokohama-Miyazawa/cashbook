@@ -24,13 +24,13 @@ class MainActivity : AppCompatActivity() {
 
         // Preferenceを取得
         val pref = getSharedPreferences("Hoge", MODE_PRIVATE)
-
+        /*
         button_gotograph.setOnClickListener {
             val intent = Intent(this, Main2Activity::class.java)
             intent.putExtra(EXTRA_TEXTDATA, "Good Morning!")
             startActivity(intent)
         }
-
+        */
         button_gotolist.setOnClickListener {
             val intent = Intent(this, Main3Activity::class.java)
             startActivity(intent)
@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity() {
                     insert(CashDBHelper.tableName,
                             "date" to now_time,
                             "item" to edit_text_payitem.text.toString(),
-                            "amount" to edit_text_payamount.text.toString()
+                            "amount" to "-" + edit_text_payamount.text.toString()
                     )
                 }
                 // db.close()
@@ -68,15 +68,26 @@ class MainActivity : AppCompatActivity() {
                 val format = SimpleDateFormat("yyyyMMddHHmmss", Locale.getDefault())
                 val now_time = format.format(date)
 
+                var db = CashDBHelper.getInstance(this);
+                db.use{
+                    insert(CashDBHelper.tableName,
+                            "date" to now_time,
+                            "item" to edit_text_incomeitem.text.toString(),
+                            "amount" to edit_text_incomeamount.text.toString()
+                    )
+                }
+
                 text_view_income.text = now_time + " " + edit_text_incomeitem.text.toString() + " " + edit_text_incomeamount.text.toString()
             }
         }
 
+        /*
         button_balance.setOnClickListener {
             if(edit_text_balance.text != null){
                 text_view_balance.text = edit_text_balance.text.toString()
                 pref.edit().putString("key", edit_text_balance.text.toString()).commit()
             }
         }
+        */
     }
 }

@@ -13,7 +13,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
-
+        <!--
         <Button
             android:id="@+id/button_gotograph"
             android:text="@string/tograph"
@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:gravity="center"/>
-
+        -->
         <Button
             android:id="@+id/button_gotolist"
             android:text="@string/tolist"
@@ -107,6 +107,7 @@
         android:layout_height="wrap_content" />
 
     <!-- 残高 -->
+    <!--
     <TextView
         android:id="@+id/text_view_balance"
         android:layout_width="match_parent"
@@ -129,5 +130,6 @@
         android:text="@string/balance"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+    -->
     
 </LinearLayout>
